@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+<target name="-pre-build" >
+		<antcall  target="set-manifest-values" />
+	</target>
+
+<target name="set-manifest-values">
+    <property file="version.properties"/>
+  <replaceregexp file="AndroidManifest.xml">
+    <regexp pattern="android:versionName=&quot;.*&quot;"/>
+    <substitution expression="android:versionName=&quot;${version.name}&quot;"/>
+  </replaceregexp>
+  <replaceregexp file="AndroidManifest.xml">
+    <regexp pattern="android:versionCode=&quot;.*&quot;"/>
+      <substitution expression="android:versionCode=&quot;${android:versionCode}&quot;"/>
+  </replaceregexp>
+</target>
+
+</project>
